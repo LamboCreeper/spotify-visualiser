@@ -20,9 +20,9 @@ async function HTTPRequest(method: HTTPRequestMethod, url: string, options?: HTT
 		logError("There was an error requesting data.", request);
 	} catch (error) {
 		logError(error.message, error);
-
-		return;
 	}
+
+	return;
 }
 
 export default HTTPRequest;
