@@ -1,0 +1,31 @@
+{
+  "name": "spotify-visualiser",
+  "version": "1.0.0",
+  "description": "Visualise your Spotify playlists.",
+  "main": "./build/app.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && node ./build/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LamboCreeper/spotify-visualiser.git"
+  },
+  "keywords": [
+    "spotify",
+    "visualise"
+  ],
+  "author": "LamboCreeper",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/LamboCreeper/spotify-visualiser/issues"
+  },
+  "homepage": "https://github.com/LamboCreeper/spotify-visualiser#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.2"
+  }
+}
