@@ -2,6 +2,7 @@ import HTTPRequest from "../utils/HTTPRequest";
 import HTTPRequestMethod from "../enums/HTTPRequestMethod";
 import generateURL from "../helpers/generateURL";
 import SpotifyPlaylist from "../interfaces/SpotifyPlaylist";
+import SpotifyTrack from "../interfaces/SpotifyTrack";
 
 class SpotifyService {
 	baseURL = "https://api.spotify.com/v1";
@@ -57,6 +58,33 @@ class SpotifyService {
 			url: playlist.external_urls.spotify,
 			public: playlist.public,
 			total_tracks: playlist.tracks.total
+		}));
+	}
+
+	/**
+	 * Gets an array of Spotify tracks in a specific playlist.
+	 * @param {string} id - The id of the playlist you would like tracks of.
+	 * @param {string} accessToken - The access token for Spotify's API.
+	 * @returns {SpotifyTrack[]} - an array of Spotify tracks.
+	 */
+	async getPlaylistTracks(id: string, accessToken: string): Promise<SpotifyTrack[]> {
+		const url = `${this.baseURL}/playlists/${id}/tracks`;
+
+		const { items } = await HTTPRequest(HTTPRequestMethod.GET, url, {
+			headers: {
+				Authorization: `Bearer ${accessToken}`
+			}
+		});
+
+		return items.map((track: any) => ({
+			id: track.track.id,
+			name: track.track.name,
+			releaseDate: track.track.release_date,
+			addedAt: track.added_at,
+			addedBy: track.added_by.id,
+			albumType: track.track.album.album_type,
+			url: track.track.external_urls.spotify,
+			artwork: track.track.album.images[0]
 		}));
 	}
 }
