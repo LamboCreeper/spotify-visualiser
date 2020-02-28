@@ -3,6 +3,7 @@ import HTTPRequestMethod from "../enums/HTTPRequestMethod";
 import generateURL from "../helpers/generateURL";
 import SpotifyPlaylist from "../interfaces/SpotifyPlaylist";
 import SpotifyTrack from "../interfaces/SpotifyTrack";
+import SpotifyTrackFeatures from "../interfaces/SpotifyTrackFeatures";
 
 class SpotifyService {
 	baseURL = "https://api.spotify.com/v1";
@@ -86,6 +87,42 @@ class SpotifyService {
 			url: track.track.external_urls.spotify,
 			artwork: track.track.album.images[0]
 		}));
+	}
+
+	/**
+	 * Get audio features about an array of tracks.
+ 	 * @param {string[]} tracks - An array of track ids.
+	 * @param {string} accessToken - The access token for Spotify's API.
+	 * @returns {SpotifyTrackFeatures[]} - an array of Spotify track features.
+	 */
+	async getAudioFeatures(tracks: string[], accessToken: string): Promise<SpotifyTrackFeatures[]> {
+		if (tracks && tracks.length < 101) {
+			const url = `${this.baseURL}/audio-features?ids=${tracks.join()}`;
+
+			const { audio_features } = await HTTPRequest(HTTPRequestMethod.GET, url, {
+				headers: {
+					Authorization: `Bearer ${accessToken}`
+				}
+			});
+
+			return audio_features.map((track: any) => ({
+				id: track.id,
+				danceability: track.danceability,
+				energy: track.energy,
+				key: track.key,
+				loudness: track.loudness,
+				speechiness: track.speechiness,
+				acousticness: track.acousticness,
+				instrumentalness: track.instrumentalness,
+				liveness: track.liveness,
+				valence: track.valence,
+				tempo: track.tempo,
+				duration: track.duration,
+				timeSignature: track.timeSignature
+			}));
+		} else {
+			throw new Error("You can only supply a maximum of 100 tracks.");
+		}
 	}
 }
 
