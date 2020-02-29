@@ -6,10 +6,11 @@ import SpotifyTrack from "../interfaces/SpotifyTrack";
 import SpotifyTrackFeatures from "../interfaces/SpotifyTrackFeatures";
 
 class SpotifyService {
-	baseURL = "https://api.spotify.com/v1";
-	clientId = process.env.SPOTIFY_CLIENT_ID;
-	clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
-	redirectURI = process.env.SPOTIFY_REDIRECT_URI;
+	private clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+
+	readonly baseURL = "https://api.spotify.com/v1";
+	readonly clientId = process.env.SPOTIFY_CLIENT_ID;
+	readonly redirectURI = process.env.SPOTIFY_REDIRECT_URI;
 
 	constructor() {
 		if ([this.clientId, this.clientSecret].includes(undefined)) {
