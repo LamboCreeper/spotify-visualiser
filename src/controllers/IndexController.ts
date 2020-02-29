@@ -6,10 +6,14 @@ const SPOTIFY_BASE_URL = "https://accounts.spotify.com/authorize";
 const SPOTIFY_RESPONSE_TYPE = "code";
 const SPOTIFY_SCOPES = "playlist-read-private";
 
-export function get(req: Request, res: Response): void {
-	if (req.query.code) {
+export async function get(req: Request, res: Response): Promise<void> {
+	const { accessToken }: any = req.session;
+
+	if (accessToken) {
+		const playlists = await SpotifyService.getUsersPlaylists(accessToken);
+
 		return res.status(200).render("dashboard", {
-			playlists: []
+			playlists
 		});
 	}
 
