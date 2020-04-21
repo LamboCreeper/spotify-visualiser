@@ -2,43 +2,18 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="css/style.css" />
-        <style>
-            #poster h1 {
-                font-size: 4rem;
-            }
+        <link rel="stylesheet" href="css/lineup-poster.css" />
 
-            #poster {
-                width: 600px;
-                margin: 0 auto;
-                padding: 25px;
-                text-align: center;
-                background-color: red;
-            }
-
-            #festival-headliners {
-                display: flex;
-                justify-content: space-between;
-                font-size: 2rem;
-            }
-
-            #festival-artists {
-                display: flex;
-                justify-content: space-evenly;
-                flex-wrap: wrap;
-                font-size: 1.75rem;
-            }
-
-            #festival-artists h3 {
-                padding: 0 5px;
-            }
-
-            #output {
-                display: none;
-            }
-        </style>
+        <script defer src="js/html2canvas.min.js"></script>
+        <script defer src="js/lineupPoster.js"></script>
     </head>
     <body>
         <main>
+            <section id="poster-options" class="container">
+                <h1>
+                    Customise Your Poster
+                </h1>
+            </section>
             <section id="poster">
                 <h1>
                     #DreamFest
@@ -62,26 +37,12 @@
                     <% } %>
                 </section>
             </section>
-            <button id="poster-download" type="button">
-                Download Lineup
-            </button>
+            <section id="download-area" class="container">
+                <button id="poster-download" type="button">
+                    Download Lineup
+                </button>
+            </section>
             <section id="output"></section>
         </main>
-        <footer>
-            <script src="js/html2canvas.min.js"></script>
-            <script>
-                const poster = document.querySelector("#poster");
-                const output = document.querySelector("#output");
-                const downloadButton = document.querySelector("#poster-download");
-
-                downloadButton.addEventListener("click", async () => {
-                    const canvas = await html2canvas(poster);
-                    const img = canvas.toDataURL("image/jpeg");
-
-                    window.open(img);
-                });
-                (async () => output.append(await html2canvas(poster)))();
-            </script>
-        </footer>
     </body>
 </html>

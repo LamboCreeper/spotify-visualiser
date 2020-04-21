@@ -1,0 +1,45 @@
+#poster-options {
+  padding: 25px;
+  text-align: center;
+}
+
+#poster {
+  width: 600px;
+  margin: 0 auto;
+  padding: 25px;
+  text-align: center;
+  border: 1px solid #000000;
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    padding: 0 5px;
+    font-size: 1.75rem;
+  }
+}
+
+#festival-headliners {
+  display: flex;
+  justify-content: space-between;
+}
+
+#festival-artists {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+#output {
+  display: none;
+}
+
+#download-area {
+  padding: 50px;
+  text-align: center;
+}
