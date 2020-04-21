@@ -4,8 +4,10 @@
   "description": "Visualise your Spotify playlists.",
   "main": "./build/app.js",
   "scripts": {
-    "build": "tsc",
-    "start": "tsc && node ./build/app.js",
+    "build:ts": "tsc",
+    "build:sass": "sass public/scss/style.scss public/css/style.css",
+    "build": "npm run build:ts && npm run build:sass",
+    "start": "npm run build && node ./build/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,6 +29,7 @@
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
+    "scss": "^0.2.4",
     "uuid": "^7.0.1"
   },
   "devDependencies": {
