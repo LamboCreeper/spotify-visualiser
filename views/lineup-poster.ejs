@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/lineup-poster.css" />
+
+        <script defer src="js/html2canvas.min.js"></script>
+        <script defer src="js/lineupPoster.js"></script>
+    </head>
+    <body>
+        <main>
+            <section id="poster-options" class="container">
+                <h1>
+                    Customise Your Poster
+                </h1>
+            </section>
+            <section id="poster">
+                <h1>
+                    #DreamFest
+                </h1>
+                <section id="festival-headliners">
+                    <h2>
+                        <%= artists[0].name.toUpperCase() %>
+                    </h2>
+                    <h2>
+                        <%= artists[1].name.toUpperCase() %>
+                    </h2>
+                    <h2>
+                        <%= artists[2].name.toUpperCase() %>
+                    </h2>
+                </section>
+                <section id="festival-artists">
+                    <% for (const artist of artists.splice(3)) { %>
+                        <h3>
+                            <%= artist.name.toUpperCase() %>
+                        </h3>
+                    <% } %>
+                </section>
+            </section>
+            <section id="download-area" class="container">
+                <button id="poster-download" type="button">
+                    Download Lineup
+                </button>
+            </section>
+            <section id="output"></section>
+        </main>
+    </body>
+</html>
