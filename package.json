@@ -5,7 +5,7 @@
   "main": "./build/app.js",
   "scripts": {
     "build:ts": "tsc",
-    "build:sass": "sass public/scss/style.scss public/css/style.css",
+    "build:sass": "sass public/scss:public/css",
     "build": "npm run build:ts && npm run build:sass",
     "start": "npm run build && node ./build/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
