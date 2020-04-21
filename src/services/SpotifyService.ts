@@ -4,6 +4,7 @@ import generateURL from "../helpers/generateURL";
 import SpotifyPlaylist from "../interfaces/SpotifyPlaylist";
 import SpotifyTrack from "../interfaces/SpotifyTrack";
 import SpotifyTrackFeatures from "../interfaces/SpotifyTrackFeatures";
+import SpotifyUserTopArtists from "../interfaces/SpotifyUserTopArtists";
 
 class SpotifyService {
 	private clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
@@ -124,6 +125,27 @@ class SpotifyService {
 		} else {
 			throw new Error("You can only supply a maximum of 100 tracks.");
 		}
+	}
+
+	/**
+	 * Get a user's top artists on Spotify.
+	 * @param {string} accessToken - The access token for Spotify's API.
+	 * @returns {SpotifyUserTopArtists[]} - an array of Spotify top uysers
+	 */
+	async getUserTopArtists(accessToken: string): Promise<SpotifyUserTopArtists> {
+		const url = `${this.baseURL}/me/top/artists`;
+
+		const { items } = await HTTPRequest(HTTPRequestMethod.GET, url, {
+			headers: {
+				Authorization: `Bearer ${accessToken}`
+			}
+		});
+
+		console.log(items);
+
+		return items.map((artist: any) => ({
+			name: artist.name
+		}));
 	}
 }
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="css/style.css" />
+
+        <style>
+            #poster h1 {
+                font-size: 4rem;
+            }
+
+            #poster {
+                width: 600px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            #festival-headliners {
+                display: flex;
+                justify-content: space-between;
+                font-size: 2rem;
+            }
+
+            #festival-artists {
+                display: flex;
+                justify-content: space-evenly;
+                flex-wrap: wrap;
+                font-size: 1.75rem;
+            }
+
+            #festival-artists h3 {
+                padding: 0 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <section id="poster">
+                <h1>
+                    Festival Name
+                </h1>
+                <section id="festival-headliners">
+                    <h2>
+                        <%= artists[0].name.toUpperCase() %>
+                    </h2>
+                    <h2>
+                        <%= artists[1].name.toUpperCase() %>
+                    </h2>
+                    <h2>
+                        <%= artists[2].name.toUpperCase() %>
+                    </h2>
+                </section>
+                <section id="festival-artists">
+                    <% for (const artist of artists.splice(3)) { %>
+                        <h3>
+                            <%= artist.name.toUpperCase() %>
+                        </h3>
+                    <% } %>
+                </section>
+            </section>
+        </main>
+    </body>
+</html>
