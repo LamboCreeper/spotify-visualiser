@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            :root {
+                font-size: 62.5%;
+            }
+
+            #playlist-tracks {
+                margin: 25px;
+
+                display: grid;
+
+                grid-template-columns: repeat(5, 1fr);
+                grid-column-gap: 25px;
+                grid-row-gap: 25px;
+            }
+
+            .playlist-track {
+                width: 100%;
+                padding-bottom: 100%;
+
+                position: relative;
+
+                display: flex;
+
+                justify-content: center;
+                align-items: center;
+
+                background-position: center;
+                background-size: cover;
+            }
+
+            .playlist-track p {
+                position: absolute;
+
+                font-size: 1.5rem;
+                top: calc(50% - .75rem);
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div id="controls">
+                <h3>
+                    Controls
+                </h3>
+                <button id="sort-by-bpm" type="button">
+                    Sort by BPM
+                </button>
+            </div>
+            <section id="playlist-tracks">
+                <% for (const track of tracks) { %>
+                <a target="_blank" href="<%= track.url %>">
+                    <div class="playlist-track" style="background-image: url('<%= track.artwork.url %>'); ">
+                        <p>
+                            <%= track.name %>
+                        </p>
+                    </div>
+                </a>
+                <% } %>
+            </section>
+        </main>
+    </body>
+    <footer>
+        <script>
+            const tracks = JSON.parse(`<%- JSON.stringify(tracks) %>`);
+            const playlistTracksSection = document.querySelector("#playlist-tracks");
+            const sortByBPM = document.querySelector("#sort-by-bpm");
+
+            function sortTracksByProperty(property) {
+                playlistTracksSection.innerHTML = "";
+
+                tracks.sort((a, b) => a[property] < b[property]).map((t) =>
+                    playlistTracksSection.innerHTML += `${t.name} (${t[property]})`
+                );
+            }
+
+            sortByBPM.addEventListener("click", () => {
+                console.count();
+                sortTracksByProperty("bpm");
+            });
+        </script>
+    </footer>
+</html>
