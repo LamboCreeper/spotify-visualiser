@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 
+$spotify-green: #1ED760;
+$spotify-hover-green: #1DB954;
+
 * {
   box-sizing: border-box;
 }
@@ -11,6 +14,26 @@
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
+}
+
+button {
+  min-width: 160px;
+  padding: 16px 14px 18px;
+  color: #FFFFFF;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-color: $spotify-green;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 500px;
+  transition: background-color .3s;
+}
+
+button:hover {
+  background-color: $spotify-hover-green;
 }
 
 .container {
