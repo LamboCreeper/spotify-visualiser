@@ -5,6 +5,7 @@ import {v1 as generateUUID} from "uuid";
 import {logError, logInfo} from "./helpers/logger";
 import IndexRoutes from "./routes/IndexRoutes";
 import AuthRoutes from "./routes/AuthRoutes";
+import PlaylistRoutes from "./routes/PlaylistRoutes";
 
 const app = express();
 
@@ -18,6 +19,7 @@ if (process.env.PORT) {
 
 	app.use("/", IndexRoutes);
 	app.use("/auth", AuthRoutes);
+	app.use("/playlist", PlaylistRoutes);
 
 	app.listen(process.env.PORT, () => {
 		logInfo(`Started Express server on port ${process.env.PORT}.`);

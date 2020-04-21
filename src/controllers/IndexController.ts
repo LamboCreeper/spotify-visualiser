@@ -4,7 +4,7 @@ import SpotifyService from "../services/SpotifyService";
 
 const SPOTIFY_BASE_URL = "https://accounts.spotify.com/authorize";
 const SPOTIFY_RESPONSE_TYPE = "code";
-const SPOTIFY_SCOPES = "playlist-read-private";
+const SPOTIFY_SCOPES = "playlist-read-private,user-top-read";
 
 export async function get(req: Request, res: Response): Promise<void> {
 	const { accessToken }: any = req.session;
