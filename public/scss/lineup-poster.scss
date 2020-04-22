@@ -15,7 +15,7 @@
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: 2.75rem;
   }
 
   h3 {
@@ -42,4 +42,76 @@
 #download-area {
   padding: 50px;
   text-align: center;
+}
+
+.poster-background-white {
+  background-color: #FFFFFF;
+}
+
+.poster-background-black {
+  background-color: #000000;
+}
+
+.poster-background-red {
+  background-color: #FF0000;
+}
+
+.poster-background-green {
+  background-color: #00FF00;
+}
+
+.poster-background-blue {
+  background-color: #0000FF;
+}
+
+.poster-background-orange {
+  background-color: #FF3A00;
+}
+
+.poster-background-purple {
+  background-color: #A500FF;
+}
+
+.poster-background-pink {
+  background-color: #FF00FB;
+}
+
+.poster-text-white {
+  color: #FFFFFF;
+}
+
+.poster-text-black {
+  color: #000000;
+}
+
+.poster-text-red {
+  color: #FF0000;
+}
+
+.poster-text-green {
+  color: #00FF00;
+}
+
+.poster-text-blue {
+  color: #0000FF;
+}
+
+.poster-text-orange {
+  color: #FF3A00;
+}
+
+.poster-text-purple {
+  color: #A500FF;
+}
+
+.poster-text-pink {
+  color: #FF00FB;
+}
+
+.poster-font-italic {
+  font-style: italic;
+}
+
+.poster-font-underlined {
+  text-decoration: underline;
 }
