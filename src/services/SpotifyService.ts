@@ -141,8 +141,6 @@ class SpotifyService {
 			}
 		});
 
-		console.log(items);
-
 		return items.map((artist: any) => ({
 			name: artist.name
 		}));
