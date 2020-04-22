@@ -3,6 +3,8 @@ const output = document.querySelector("#output");
 const downloadButton = document.querySelector("#poster-download");
 const selectPosterBackground = document.querySelector("#poster-background");
 const selectPosterText = document.querySelector("#poster-text");
+const selectItalicFont = document.querySelector("#poster-font-italic");
+const selectUnderlinedFont = document.querySelector("#poster-font-underlined");
 
 const colours = [
     "white",
@@ -37,6 +39,26 @@ selectPosterText.addEventListener("change", ({ target }) => {
     });
 
     poster.classList.add(`poster-text-${value}`);
+});
+
+selectItalicFont.addEventListener("change", ({ target }) => {
+    const { checked } = target;
+
+    if (!checked) {
+        poster.classList.remove("poster-font-italic");
+    } else {
+        poster.classList.add("poster-font-italic");
+    }
+});
+
+selectUnderlinedFont.addEventListener("change", ({ target }) => {
+    const { checked } = target;
+
+    if (!checked) {
+        poster.classList.remove("poster-font-underlined");
+    } else {
+        poster.classList.add("poster-font-underlined");
+    }
 });
 
 downloadButton.addEventListener("click", async () => {
